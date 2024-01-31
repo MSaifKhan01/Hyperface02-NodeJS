@@ -8,7 +8,7 @@ const TweetRouter = express.Router();
 // Get all tweets
 TweetRouter.get('/', async (req, res) => {
   try {
-    const tweets = await tweetModel.find().populate('baseItem').populate('user');
+    const tweets = await tweetModel.find().populate('baseItem').populate('author');
     res.json(tweets);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -18,7 +18,7 @@ TweetRouter.get('/', async (req, res) => {
 // Get a specific tweet
 TweetRouter.get('/:id', async (req, res) => {
   try {
-    const tweet = await tweetModel.findById(req.params.id).populate('baseItem').populate('user');
+    const tweet = await tweetModel.findById(req.params.id).populate('baseItem').populate('author');
     if (!tweet) {
       return res.status(404).json({ message: 'Tweet not found' });
     }
@@ -30,7 +30,9 @@ TweetRouter.get('/:id', async (req, res) => {
 
 // Create a new tweet
 TweetRouter.post('/',RoleBase(["admin"]), async (req, res) => {
-  console.log("from twet",req.user,req.userID)
+
+  // console.log("T-User ID:", req.user._id); 
+
 
   try {
 
@@ -42,7 +44,7 @@ TweetRouter.post('/',RoleBase(["admin"]), async (req, res) => {
 
       const tweet = new tweetModel({
         baseItem: req.body.baseItem,
-        author: req.body.author
+        author: req.user._id
       });
       const newTweet = await tweet.save();
     res.status(201).json(newTweet);
