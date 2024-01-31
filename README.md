@@ -29,10 +29,7 @@ The application is deployed on Render and can be accessed at [https://hyperface-
 
 
 
-### Prerequisites
-Before running the application, ensure you have the following installed:
-- Node.js
-- MongoDB
+
 
 
 ### Getting Started
