@@ -2,12 +2,13 @@
 const express = require('express');
 const { tweetModel } = require('../Models/Tweet');
 const {RoleBase}=require("../Middleware/Role")
+const { BaseModel } = require('../Models/BaseModel');
 const TweetRouter = express.Router();
 
 // Get all tweets
 TweetRouter.get('/', async (req, res) => {
   try {
-    const tweets = await tweetModel.find().populate('baseItem').populate('author');
+    const tweets = await tweetModel.find().populate('baseItem').populate('user');
     res.json(tweets);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -17,7 +18,7 @@ TweetRouter.get('/', async (req, res) => {
 // Get a specific tweet
 TweetRouter.get('/:id', async (req, res) => {
   try {
-    const tweet = await tweetModel.findById(req.params.id).populate('baseItem').populate('author');
+    const tweet = await tweetModel.findById(req.params.id).populate('baseItem').populate('user');
     if (!tweet) {
       return res.status(404).json({ message: 'Tweet not found' });
     }
@@ -29,6 +30,7 @@ TweetRouter.get('/:id', async (req, res) => {
 
 // Create a new tweet
 TweetRouter.post('/',RoleBase(["admin"]), async (req, res) => {
+  console.log("from twet",req.user,req.userID)
 
   try {
 
