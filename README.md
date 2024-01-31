@@ -163,7 +163,9 @@ The application is deployed on Render and can be accessed at [https://hyperface-
   - Description: Delete a tweet.
 
 
-
+### Relationships
+In Hyperface02, various entities are interconnected through relationships, enabling a cohesive system 
+for managing content. 
 
 
 
