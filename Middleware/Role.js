@@ -5,12 +5,12 @@ const RoleBase = (permittedRoles) => (req, res, next) => {
     const token=req.headers.authorization
     const decoded= jwt.verify(token,process.env.JWT_Secret)
 
-    // const  x_userRole  = req.body.role;
+   
 
     const x_userRole = decoded.role;
  
     console.log("hello",x_userRole)
-    // console.log(req.user)
+    
     if(permittedRoles.includes(x_userRole)){
         next();
     }

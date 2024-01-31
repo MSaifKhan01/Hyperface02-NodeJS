@@ -51,10 +51,10 @@ BaseItemRouter.post('/',upload.single("file"),RoleBase(["admin"]), async (req, r
   
     s3.upload(params, async (err, data) => {
       if (err) {
-        console.error("Error uploading file to S3:", err);
+      
         return res.status(500).send("Internal Server Error");
       } else {
-        console.log("File uploaded successfully. S3 URL:", data.Location);
+       
         const imageUrlS3 = data.Location;
 
         const baseItemID = req.body.baseItem;
