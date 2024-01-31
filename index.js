@@ -24,11 +24,13 @@ app.use(cors())
 
 
 app.use("/User",userRouter)
-app.use(auth)
-app.use("/BaseItems",BaseItemRouter)
-app.use("/course",CouresRouter)
-app.use("/Article",ArticleRouter)
-app.use("/tweet",TweetRouter)
+
+
+app.use("/BaseItems", auth, BaseItemRouter);
+app.use("/course", auth, CouresRouter);
+app.use("/Article", auth, ArticleRouter);
+app.use("/tweet", auth, TweetRouter);
+
 
 app.listen(process.env.PORT, async () => {
     try {

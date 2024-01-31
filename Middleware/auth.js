@@ -10,7 +10,9 @@ const auth=(req,res,next)=>{
        console.log(decoded)
        if(decoded){
         req.body.userID=decoded.userID
-        req.body.role=decoded.role
+        // req.body.role=decoded.role
+        req.body.role = decoded.role;
+        
         
         next()
        }else{
