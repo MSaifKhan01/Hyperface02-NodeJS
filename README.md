@@ -7,13 +7,13 @@ This repository contains a Node.js application called Hyperface02, which serves 
 The application is deployed on Render and can be accessed at [https://hyperface-02.onrender.com](https://hyperface-02.onrender.com).
 
 
-### Features
-- User registration and login with JWT authentication
-- CRUD operations for managing base items (title, duration, link)
-- CRUD operations for managing courses
-- CRUD operations for managing articles
-- CRUD operations for managing tweets
-- Middleware for authentication and authorization
+### Main Features
+-  User registration and login with JWT authentication
+-  managing base items (title, duration, link)
+-  managing courses
+-  managing articles
+-  managing tweets
+-  Middleware for authentication and authorization
 
 ### Technologies Used
 - Node.js
