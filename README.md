@@ -51,7 +51,7 @@ Before running the application, ensure you have the following installed:
    ```
 5. Start the server:
    ```
-   npm start
+   npm run server
    ```
 6. Access the API endpoints using a tool like Postman or a web browser.
 
